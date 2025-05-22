@@ -50,7 +50,7 @@ Performances test with 312 images [torch 2.7.0 cuda128 + sage attention] :
 ![Captura de pantalla 2025-05-21 044524](https://github.com/user-attachments/assets/b9ec9f8a-daee-4e0b-a72c-91ff29950a7f)
 
 
-The only thing I ask of you is that you share your training parameters. This means sharing what types of uses those parameters serve (creating a consistent character Lora isn't the same as creating a Lora with varied images), so sharing what types of uses x training parameters serve would be great.
+The only thing I ask of you is that you share your training parameters. This means also sharing what types of uses those parameters serve (creating a consistent character Lora isn't the same as creating a Lora with varied images), so sharing what types of uses x training parameters serve would be great.
 
 
 
