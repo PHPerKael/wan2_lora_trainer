@@ -32,3 +32,6 @@ pause
 ```
 
 if you don't have any of this modules you can disconnect the musubi compile settings node.
+
+![image](https://github.com/user-attachments/assets/fc7f34fe-6c47-49d2-a15b-c44232c1db56)
+
