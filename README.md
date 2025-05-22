@@ -51,6 +51,7 @@ Performances test with 312 images [torch 2.7.0 cuda128 + sage attention] :
 
 
 The only thing I ask of you is that you share your training parameters. This means also sharing what types of uses those parameters serve (creating a consistent character Lora isn't the same as creating a Lora with varied images), so sharing what types of uses x training parameters serve would be great.
+Why i ask about that? Well, it could be great to have a database of (wich parameters i must to set up correctly to have a consistent character lora? As the example in this workflow).
 
 
 
