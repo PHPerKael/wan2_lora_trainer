@@ -40,7 +40,7 @@ if you don't have any of this modules you can disconnect the musubi compile sett
 
 ![image](https://github.com/user-attachments/assets/fc7f34fe-6c47-49d2-a15b-c44232c1db56)
 
-Performances test with 312 images :
+Performances test with 312 images [torch 2.7.0 cuda128 + sage attention] :
 
 
 ![Captura de pantalla 2025-05-21 044524](https://github.com/user-attachments/assets/b9ec9f8a-daee-4e0b-a72c-91ff29950a7f)
