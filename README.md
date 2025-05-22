@@ -22,13 +22,12 @@ Optional :
 
 If you have the last version of torch 2.7.0 cuda and visual studio tools, you can modify your Bat file Comfy runner with this:
 
-[code]
+
 @echo off
 REM Load Visual Studio Build Tools for the Wan subprocess environment (Optional to use max pow with the musubi compile settings and memory nodes)
 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --fast fp16_accumulation
 pause
-[\code]
 
 if you don't have any of this modules you can disconnect the musubi compile settings node.
