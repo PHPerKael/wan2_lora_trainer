@@ -1,7 +1,7 @@
 <div align="center"><h1>ComfyUI MUSUBI-TUNNER WAN LORA TRAINER</h1></div>
 
 * ComfyUi lora trainer.
-* Adaptation of the musubi-tunner library from https://github.com/kohya-ss/musubi-tuner.
+* Adaptation of the musubi-tunner library by kohya-ss. From https://github.com/kohya-ss/musubi-tuner.
 * Added train into subprocess.
 * Code mods for full compatibility with the last version of ComfyUi.
 * Added 6 nodes for training.
