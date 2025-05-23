@@ -49,6 +49,19 @@ Performances test with 312 images [torch 2.7.0 cuda128 + sage attention] :
 
 ![Captura de pantalla 2025-05-21 044524](https://github.com/user-attachments/assets/b9ec9f8a-daee-4e0b-a72c-91ff29950a7f)
 
+* Image data input are not exclusive to videos! you can train just with images as the following example (path to your images and text captions):
+
+![Captura de pantalla 2025-05-23 161441](https://github.com/user-attachments/assets/465448fe-f347-431f-b3e7-e13436d5c039)
+
+* Path into an empty folder for the cache (use different folders for each lora to not mix you cache data (cleaner and probably faster).
+  
+And the results :
+
+https://github.com/user-attachments/assets/41b439ee-6e90-49ac-83dd-d1ba21fd1d63
+
+
+
+
 
 The only thing I ask of you is that you share your training parameters. This means also sharing what types of uses those parameters serve (creating a consistent character Lora isn't the same as creating a Lora with varied images), so sharing what types of uses x training parameters serve would be great.
 Why i ask about that? Well, it could be great to have a database of wich parameters i must to set up correctly to have a Lora that can do this (For example: the included workflow is setted up as default to create a consistent character, setting up dim 16, alpha 2.0, and network dropout to 0.2. It does not mean is the best but good result to not make so restrictive the character with the base model).
