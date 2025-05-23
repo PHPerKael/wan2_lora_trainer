@@ -1,0 +1,8 @@
+__pycache__/
+.venv
+venv/
+logs/
+uv.lock
+main.exp
+main.lib
+main.obj
