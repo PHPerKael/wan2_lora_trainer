@@ -7,7 +7,7 @@
 * Added 6 nodes for training.
 * Added Example Workflow in the custom node folder.
 * Made for ComfyUi windows portable package.
-* Automated process for the creation of the TOM file, cache latents, cache texts & trainning run (Nodes triggered by this order to do the complete porcess in one shot).
+* Automated process for the creation of the TOM file, cache latents, cache texts & trainning run (Nodes triggered by this order to do the complete process in one shot).
 * You can skip latents and text caches if you need to restart the training (taking into account data has not changed vae, clipvision, text models).
 
 * ![image](https://github.com/user-attachments/assets/cce68c8f-9ae7-4de2-b5a0-be6f0d11b2cd)
