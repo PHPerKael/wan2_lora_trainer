@@ -1,3 +1,6 @@
+
+![ComfyUI_00026_](https://github.com/user-attachments/assets/57fdbf91-51d5-43ad-9ec7-3873003dca1b)
+
 <div align="center"><h1>ComfyUI MUSUBI-TUNNER WAN LORA TRAINER</h1></div>
 
 * ComfyUi lora trainer.
