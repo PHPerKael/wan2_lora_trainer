@@ -6,7 +6,7 @@
 ✅ LORA STRENGTH FIXED!.
 
 **Update version 1.01**:
-* Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes).
+* Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes/workflow).
 * Added number of cpu per process argument.
 * Added max_train_epochs argument to avoid the internal step limit of 2048.
 * Fixed scale weight norms.
