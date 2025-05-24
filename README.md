@@ -67,7 +67,7 @@ https://github.com/user-attachments/assets/41b439ee-6e90-49ac-83dd-d1ba21fd1d63
 
 
 
-Important note : settings shown in pictures does not represent the proper one for X purpose, it was just screenshots in different tests.
+Important note : settings shown in pictures does not represent the proper one for X purpose, it was just screenshots in different tests. To get the Default setting go to https://github.com/jaimitoes/ComfyUI_Wan2_1_lora_trainer/blob/main/docs/wan.md
 
 
 
