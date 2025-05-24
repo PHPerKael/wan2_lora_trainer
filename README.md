@@ -2,7 +2,7 @@
 
 <div align="center"><h1>ComfyUI MUSUBI-TUNNER WAN LORA TRAINER</h1></div>
 
-Update version 1.01:
+**Update version 1.01**:
 * Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes).
 * Added number of cpu per process argument.
 * Added max_train_epochs argument to avoid the internal step limit of 2048.
@@ -11,7 +11,7 @@ Update version 1.01:
 * Updated pictures.
 * Delete your custom folder and clone again.
 
-Features:
+**Features**:
 * ComfyUi lora trainer.
 * Adaptation of the musubi-tunner library by kohya-ss. From https://github.com/kohya-ss/musubi-tuner.
 * Added train into subprocess.
@@ -23,7 +23,7 @@ Features:
 * You can skip latents and text caches if you need to restart the training (taking into account data has not changed vae, clipvision, text models).
 
 
-Instructions:
+**Instructions**:
 1. Clone this repository into your custom node folder.
 2. install requirements.txt from custom_nodes\ComfyUI_Wan2_1_lora_trainer :
 ```
@@ -38,7 +38,7 @@ Instructions:
 Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
 ![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
 
-Torch settings run : 
+**Torch settings run** : 
 Run 14B are a heavy process so, highly recomended an instalation of torch >=2.7.0 cuda128 and visual studio tools. After this you must create your custom Bat file adding the visual Studio environment.
 Example, if you want a bat that use sage attention and also train with musubi compile settings then create it as this:
 ```
@@ -49,7 +49,7 @@ REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --use-sage-attention --fast fp16_accumulation
 pause
 ```
-NOTE : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but needs its own Visual Studio environment to work.
+**NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but needs its own Visual Studio environment to work.
 
 Then conect the compiler and memory nodes (choose your desired attention mode):
 ![image](https://github.com/user-attachments/assets/63f8862e-544d-4718-89f1-1c34067e5ee1)
