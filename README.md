@@ -6,7 +6,15 @@
 ✅ LORA STRENGTH FIXED!.
 
 **Update version 1.02**:
-* Sette up max_train_epochs to 512.
+* Setted up max_train_epochs to 512.
+* avr_loss in last update looking great (128 epochs, 30 images + 5000 steps, network dropout 0.2, other settings as home):
+* ![image](https://github.com/user-attachments/assets/17211bb0-ae8d-42b6-a4c1-3610500a62f2)
+* Deconstructed character in pieces:
+* ![image](https://github.com/user-attachments/assets/25a5b432-3c5a-4f25-9d5a-6e1a824c7570)
+* Result:
+![image](https://github.com/user-attachments/assets/13b90695-df68-48b5-bda6-a317d872e77f)
+
+
 
 **Update version 1.01**:
 * Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes/workflow).
