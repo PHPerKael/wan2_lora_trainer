@@ -1,10 +1,16 @@
-<h1>ADVERTISMENT : I'm fixing an issue that seems to invalidate the Lora, update comming soon.</h1>
-
-
 ![ComfyUI_00026_](https://github.com/user-attachments/assets/57fdbf91-51d5-43ad-9ec7-3873003dca1b)
 
 <div align="center"><h1>ComfyUI MUSUBI-TUNNER WAN LORA TRAINER</h1></div>
 
+Update version 1.01:
+* Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes).
+* Added number of cpu per process argument.
+* Added max_train_epochs argument to avoid the internal step limit of 2048.
+* Fixed scale weight norms.
+* Updated example workflow.
+* Delete your custom folder and clone again.
+
+Features:
 * ComfyUi lora trainer.
 * Adaptation of the musubi-tunner library by kohya-ss. From https://github.com/kohya-ss/musubi-tuner.
 * Added train into subprocess.
@@ -15,7 +21,6 @@
 * Automated process for the creation of the TOM file, cache latents, cache texts & trainning run (Nodes triggered by this order to do the complete process in one shot).
 * You can skip latents and text caches if you need to restart the training (taking into account data has not changed vae, clipvision, text models).
 
-  Important note : SETTING & MODELS shown in pictures does not represent the proper one for X purpose, it was just screenshots in different tests. To get the Default setting go to https://github.com/jaimitoes/ComfyUI_Wan2_1_lora_trainer/blob/main/docs/wan.md (As soon as posible i will make an update with the proper settings as default).
 
 Instructions:
 1. Clone this repository into your custom node folder.
@@ -29,14 +34,12 @@ Instructions:
 4. Enjoy training.
 
 
-Regular run: If you use regular bat you must to bypass compiler an memory settings (attention mode in spda). (Look at the picture)
-![image](https://github.com/user-attachments/assets/03bebfca-79c2-4079-aea4-0f0b7dfc5645)
-
-
+Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
+![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
 
 Torch settings run : 
-If you have the last version of torch 2.7.0 cuda and visual studio tools, you can create/modify a Bat file using the visual Studio environment:
-
+Run 14B are a heavy process so, highly recomended an instalation of torch >=2.7.0 cuda128 and visual studio tools. After this you must create your custom Bat file adding the visual Studio environment.
+Example, if you want a bat that use sage attention and also train with musubi compile settings then create it as this:
 ```
 @echo off
 REM Load Visual Studio Build Tools for the Wan subprocess environment (Optional to use max pow with the musubi compile settings and memory nodes)
@@ -45,33 +48,22 @@ REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --use-sage-attention --fast fp16_accumulation
 pause
 ```
-Note : Activating torch wihtout calling the Sage argument will cause an invalid Lora.
+NOTE : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but needs its own Visual Studio environment to work.
 
-Then activate the compiler nodes (choose sage attention o wich one you want based on your configs):
-![image](https://github.com/user-attachments/assets/8982f665-a7bd-47a1-a8eb-ad6bce87b7f2)
-
+Then conect the compiler and memory nodes (choose your desired attention mode):
+![image](https://github.com/user-attachments/assets/63f8862e-544d-4718-89f1-1c34067e5ee1)
 
 if you don't have any of this modules you can disconnect the musubi compile settings node.
 
-
-Performances test with 312 images [torch 2.7.0 cuda128 + sage attention] :
-
-
-![Captura de pantalla 2025-05-21 044524](https://github.com/user-attachments/assets/b9ec9f8a-daee-4e0b-a72c-91ff29950a7f)
-
 * Image data input are not exclusive to videos! you can train just with images as the following example (path to your images and text captions):
-
 ![Captura de pantalla 2025-05-23 161441](https://github.com/user-attachments/assets/465448fe-f347-431f-b3e7-e13436d5c039)
 
 * Path into an empty folder for the cache (use different folders for each lora to not mix you cache data (cleaner and probably faster).
-  
-And the results :
 
+Performances test with 312 images with default settings (spda) :
+![image](https://github.com/user-attachments/assets/15222364-f1db-42fa-abf3-0ccc08a953b5)
+
+And the results :
 https://github.com/user-attachments/assets/41b439ee-6e90-49ac-83dd-d1ba21fd1d63
 
-
-
-
-
-
-
+For any concern no doubt to contact me.
