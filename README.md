@@ -13,6 +13,8 @@
 * Automated process for the creation of the TOM file, cache latents, cache texts & trainning run (Nodes triggered by this order to do the complete process in one shot).
 * You can skip latents and text caches if you need to restart the training (taking into account data has not changed vae, clipvision, text models).
 
+  Important note : SETTING & MODELS shown in pictures does not represent the proper one for X purpose, it was just screenshots in different tests. To get the Default setting go to https://github.com/jaimitoes/ComfyUI_Wan2_1_lora_trainer/blob/main/docs/wan.md
+
 Instructions:
 1. Clone this repository into your custom node folder.
 2. install requirements.txt from custom_nodes\ComfyUI_Wan2_1_lora_trainer :
@@ -67,7 +69,7 @@ https://github.com/user-attachments/assets/41b439ee-6e90-49ac-83dd-d1ba21fd1d63
 
 
 
-Important note : SETTING & MODELS shown in pictures does not represent the proper one for X purpose, it was just screenshots in different tests. To get the Default setting go to https://github.com/jaimitoes/ComfyUI_Wan2_1_lora_trainer/blob/main/docs/wan.md
+
 
 
 
