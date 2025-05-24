@@ -54,6 +54,8 @@ pause
 ```
 **NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but needs its own Visual Studio environment to work.
 
+**CLIP VISION** : Clip vision is just setted up for I2V models, for training T2V Models, set clip to None. 
+
 Then conect the compiler and memory nodes (choose your desired attention mode):
 ![image](https://github.com/user-attachments/assets/63f8862e-544d-4718-89f1-1c34067e5ee1)
 
