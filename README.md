@@ -3,7 +3,7 @@
 <div align="center"><h1>ComfyUI MUSUBI-TUNNER WAN LORA TRAINER</h1></div>
 
 
-Important note: The sprites used for the training tests are property of real artirst (under copyright), so this is not only a copy of the world, it can be a tool for artist too.
+Important note: The sprites used for the training tests are property of real artirsts (under copyright), so this is not only a copy of the world, it can be a tool for artist too.
 
 ✅ LORA STRENGTH FIXED!.
 
