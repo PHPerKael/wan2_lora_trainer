@@ -30,7 +30,7 @@
 * For more info about setting up correctly parameters you can check the Wan Doc on https://github.com/kohya-ss/musubi-tuner/blob/main/docs/wan.md
 
 
-**About max_train_epochs**: The max train epochs is an equations that takes into account several arguments as gradients, number of images etc. This must be set up between 16/128 depending of the number of images you want to train. To ensure a little package of 30 images, set up it as maximum (128) to train more than 5000 steps. Take into account network dropout to not overfitting, also dim and alpha. All is relative but for sure you will find you custom setting depending of your purpose. For the moment max train epochs have a limit to 128, but if is needed to add a bigger max value i can update it.
+**About max_train_epochs**: The max train epochs is an equations that takes into account several arguments as gradients, number of images etc. This must be set up between 16/128 depending of the number of images you want to train. To ensure a little package of 30 images, set up it as maximum (128) to train more than 5000 steps. Take into account network dropout to not overfitting, also dim and alpha. All is relative but for sure you will find you custom setting depending of your purpose. For the moment max train epochs have a limit to 512, but if is needed to add a bigger max value i can update it.
 
 
 **Instructions**:
