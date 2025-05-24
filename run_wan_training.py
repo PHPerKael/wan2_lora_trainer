@@ -62,25 +62,7 @@ def main():
         sys.exit(1)
 
     parser = wtn.get_full_wan_train_arg_parser()
-    
-    # Imprimir los argumentos recibidos por el script para depuración
-    #print(f"[run_wan_training] Raw sys.argv: {sys.argv}")
-
-    # Workaround para argumentos que pueden venir como string 'None' o 'False'/'True' (bools) desde línea de comando
-    # Esto puede ser necesario si la conversión en el llamador no es perfecta.
-    # No obstante, el parser de argparse debería manejar tipos correctamente si se definen bien.
-    
-    # Parsear argumentos
-    try:
-        args = parser.parse_args() # Parsea sys.argv[1:]
-        #print(f"[run_wan_training] Parsed arguments: {vars(args)}")
-    except Exception as e_parse:
-        print(f"[run_wan_training] Error during argument parsing: {e_parse}")
-        parser.print_help()
-        traceback.print_exc()
-        sys.exit(1)
-     
-    # ... (después de parser.parse_args())
+   
     try:
         args = parser.parse_args() 
 

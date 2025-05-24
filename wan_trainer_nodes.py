@@ -453,13 +453,13 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
                 "output_name": ("STRING", {"default": "my_wan_lora", "tooltip": "The name you'll give your final LoRA file. For example, if you enter \"my_character\", the file will be named `my_character.safetensors`."}),
                 "task": (wan_tasks_list, {"default": "t2v-1.3B", "tooltip": "Defines the type of task you want the model to learn (e.g., generating video from text). This should match the capability of your base model (e.g., t2v-1.3B for Text-to-Video with 1.3 billion parameters)."}),
                 "max_train_steps": ("INT", {"default": 1000, "tooltip": "Total number of training \"steps\" or iterations the model will perform. More steps mean longer training, but not always better quality (can lead to \"overfitting\")."}),
-                "learning_rate": ("FLOAT", {"default": 1e-5, "step": 0.000001, "tooltip": "The \"speed\" at which the model learns from its mistakes. A very high value can lead to unstable or poor learning; too low, and training will be very slow. This is a very important parameter to adjust."}),
+                "learning_rate": ("FLOAT", {"default": 2e-4, "step": 0.000001, "tooltip": "The \"speed\" at which the model learns from its mistakes. A very high value can lead to unstable or poor learning; too low, and training will be very slow. This is a very important parameter to adjust."}),
                 "optimizer_type": (["AdamW", "AdamW8bit", "Adafactor", "Lion", "Prodigy", "DAdaptAdam"], {"default": "AdamW8bit", "tooltip": "The \"engine\" or algorithm that adjusts the LoRA's weights during training for efficient learning. `AdamW8bit` is a common and memory-efficient option."}),
                 "lr_scheduler": (["constant", "constant_with_warmup", "linear", "cosine"], {"default": "cosine", "tooltip": "Defines how the `learning_rate` (learning speed) changes throughout training. For example, `cosine` gradually decreases the speed towards the end, while `constant` keeps it the same."}),
                 "network_module": (["networks.lora", "networks.lora_wan"], {"default": "networks.lora_wan", "tooltip": "The specific type of LoRA architecture to be used. For WAN (Wang et al.) models, `networks.lora_wan` is the recommended option."}),
-                "network_dim": ("INT", {"default": 16, "tooltip": "Determines the \"power\" or \"complexity\" of your LoRA. A higher value allows for learning more details, but requires more memory (VRAM) and is more prone to overfitting. Also known as `rank`."}),
-                "network_alpha": ("FLOAT", {"default": 2.0, "tooltip": "A value that helps balance the impact of `network_dim`. A higher value allows the LoRA to integrate better and not \"deviate\" too much from the base model. Often set to the same value as `network_dim`. Lower than Dim gives more control making it, more strict but less versatility."}),
-                "network_dropout": ("FLOAT", {"default": 0.2, "step": 0.1, "tooltip": "A technique to help prevent overfitting (when the model learns the training data too well and doesn't generalize properly). A value between 0.1 and 0.5 can be useful. `0.0` means it's not used."}),
+                "network_dim": ("INT", {"default": 32, "tooltip": "Determines the \"power\" or \"complexity\" of your LoRA. A higher value allows for learning more details, but requires more memory (VRAM) and is more prone to overfitting. Also known as `rank`."}),
+                "network_alpha": ("FLOAT", {"default": 1.0, "tooltip": "A value that helps balance the impact of `network_dim`. A higher value allows the LoRA to integrate better and not \"deviate\" too much from the base model. Often set to the same value as `network_dim`. Lower than Dim gives more control making it, more strict but less versatility."}),
+                "network_dropout": ("FLOAT", {"default": 0.0, "step": 0.1, "tooltip": "A technique to help prevent overfitting (when the model learns the training data too well and doesn't generalize properly). A value between 0.1 and 0.5 can be useful. `0.0` means it's not used."}),
                 "mixed_precision": (["no", "fp16", "bf16"], {"default": "bf16", "tooltip": "Allows the use of lower precision numbers (fp16 or bf16) to speed up training and reduce GPU memory (VRAM) usage, at the cost of a minimal quality loss. `bf16` is usually a good balance. `no` uses full precision."}),
                 "gradient_accumulation_steps": ("INT", {"default": 1, "tooltip": "Number of training steps the model will wait before updating its weights. This is useful for simulating a larger \"batch size\" (batch of images) if you have low VRAM."}),
                 "gradient_checkpointing": ("BOOLEAN", {"default": True, "tooltip": "A technique to save GPU memory (VRAM) during training, at the cost of a slight increase in time. Enable this if you run out of memory."}),
@@ -471,11 +471,13 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
                 "max_data_loader_n_workers": ("INT", {"default": 2, "tooltip": "Number of processes that will load and prepare images for training. A higher value can speed up data loading (especially if you have a lot), but consumes more CPU and RAM."}),
                 "persistent_data_loader_workers": ("BOOLEAN", {"default": True, "tooltip": "Whether to keep data loading processes active all the time. Enable this to reduce startup time between \"epochs\" (full passes through the data) if you have many small epochs."}),
                 "save_every_n_steps": ("INT", {"default": 0, "tooltip": "Saves a copy (checkpoint) of the LoRA every certain number of training \"steps.\" Useful for saving progress and recovering if something goes wrong. Set to `0` to not save by steps."}),
-                "save_every_n_epochs": ("INT", {"default": 0, "tooltip": "Saves a copy (checkpoint) of the LoRA every certain number of \"epochs\" (when it has processed all training data once). Useful for saving stable versions. Set to `0` to not save by epochs."}),
+                "save_every_n_epochs": ("INT", {"default": 1, "tooltip": "Saves a copy (checkpoint) of the LoRA every certain number of \"epochs\" (when it has processed all training data once). Useful for saving stable versions. Set to `0` to not save by epochs."}),
                 "save_state": ("BOOLEAN", {"default": False, "tooltip": "Whether to save the full training \"state\" (not just the LoRA file). This allows you to resume training exactly where you left off if it's interrupted or if you want to perform more steps later."}),  
-                "scale_weight_norms": ("FLOAT", {"default": 0.0, "tooltip": "Adjusts the \"strength\" of the LoRA weights during training. A small value can help keep the LoRA more subtle and closer to the base model. (If set to `0.0`, it means it's not used)."}),
+                "scale_weight_norms": ("FLOAT", {"default": 1.0, "tooltip": "Adjusts the \"strength\" of the LoRA weights during training. A small value can help keep the LoRA more subtle and closer to the base model. (If set to `0.0`, it means it's not used)."}),
                 "timestep_sampling": (["sigma", "uniform", "sigmoid", "shift"], {"default": "sigma", "tooltip": "Method for sampling the \"timesteps\" of the diffusion process. This affects how the model learns to generate images at different noise stages. `sigma` is a good default."}),
                 "discrete_flow_shift": ("FLOAT", {"default": 3.0, "tooltip": "A specific adjustment for the `shift` timestep sampling method. It's usually not necessary to modify this unless you know what you're doing or are following a very specific guide."}),
+                "num_cpu_threads_per_process": ("INT", {"default": 1, "min": 1, "max": os.cpu_count(), "tooltip": "Number of CPU threads per process for accelerate. Defaults to 1. Set to 0 for auto."}),
+                "max_train_epochs": ("INT", {"default": 16, "min": 0, "max": 128, "tooltip": "Recomended by Wan, max_train_epochs will override max_train_steps to remove the internal limit of 2048 steps for better learning, max_train_step will be = args.max_train_epochs * math.ceil(len(train_dataloader) / accelerator.num_processes / args.gradient_accumulation_steps) "}),
             },
             "optional": {
                 "network_args_str": ("STRING", {"multiline": True, "default": ""}),
@@ -616,7 +618,7 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
         if not args_dict.get("output_name"):
             args_dict["output_name"] = kwargs.get("output_name", "my_wan_lora_node_default")
 
-
+        
         # Manejo de logging_dir (basado en el código original del nodo)
         #log_with_val = args_dict.get("log_with", "none")
         #if log_with_val in ["tensorboard", "all"]:
@@ -694,19 +696,23 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
         cmd = [accelerate_script_path, "launch"] # <--- USA EL SCRIPT DIRECTAMENTE
         # Aquí se podrían añadir argumentos específicos para `accelerate launch` si fuera necesario,
         # por ejemplo, --num_processes, si no se gestiona por config o el script interno.
-        # Por ahora, se asume que el script run_wan_training.py maneja la config de Accelerator
-        # o que `accelerate launch` usa su config por defecto.
+        # Añadir num_cpu_threads_per_process para accelerate launch
+        if hasattr(args, 'num_cpu_threads_per_process') and args.num_cpu_threads_per_process > 0:
+            print("SETTING UP CPU THREADS :" + str(args.num_cpu_threads_per_process))
+            cmd.extend(["--num_cpu_threads_per_process", str(args.num_cpu_threads_per_process)])
         # El argumento mixed_precision SÍ es un argumento de `accelerate launch` Y del script.
         # Lo pasaremos al script, y `accelerate launch` también podría recogerlo si es un arg global.
         # Para ser explícito con `accelerate launch`:
         if hasattr(args, 'mixed_precision') and args.mixed_precision != "no":
              cmd.extend(["--mixed_precision", args.mixed_precision])
         # Si tuvieras num_gpus o num_processes como input del nodo:
-        # cmd.extend(["--num_gpus", str(args.num_gpus)])
-
- 
-
+        #cmd.extend(["--num_gpus", str(args.num_gpus)])
+        #Max epoch
+        if hasattr(args, 'max_train_epochs') and args.max_train_epochs == 0:
+             args["max_train_epochs"] = None
         
+        
+
     # Aquí iría la lógica para configurar el modelo o el optimizador para FP8 base
     # Por ejemplo, usar torch.autocast con dtype=torch.float8_e4m3fn si el hardware/PyTorch lo soporta.
 
@@ -716,12 +722,13 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
         for key, value in vars(args).items():
             if value is None:
                 continue # No pasar argumentos con valor None
-            
+            if key in ["num_cpu_threads_per_process"]:
+                continue
             # Argumentos que son para accelerate launch y ya se han añadido, o que no son para el script
             if key in ["mixed_precision"]: # mixed_precision se pasa al script Y a accelerate launch
                                            # Si hay otros args solo para accelerate, listarlos aquí para skip.
-                pass # Dejar que se añada también para el script, Accelerator lo puede usar.
-
+                pass                       # Dejar que se añada también para el script, Accelerator lo puede usar.
+            
             if isinstance(value, bool):
                 if value:
                     cmd.append(f"--{key}")
