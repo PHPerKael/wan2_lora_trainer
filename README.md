@@ -3,7 +3,7 @@
 <div align="center"><h1>ComfyUI MUSUBI-TUNNER WAN LORA TRAINER</h1></div>
 
 
-✅ MODEL STRENGTH FIXED!.
+✅ LORA STRENGTH FIXED!.
 
 **Update version 1.01**:
 * Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes).
