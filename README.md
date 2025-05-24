@@ -67,10 +67,7 @@ https://github.com/user-attachments/assets/41b439ee-6e90-49ac-83dd-d1ba21fd1d63
 
 
 
-
-
-The only thing I ask of you is that you share your training parameters. This means also sharing what types of uses those parameters serve (creating a consistent character Lora isn't the same as creating a Lora with varied images), so sharing what types of uses x training parameters serve would be great.
-Why i ask about that? Well, it could be great to have a database of wich parameters i must to set up correctly to have a Lora that can do this (For example: the included workflow is setted up as default to create a consistent character, setting up dim 16, alpha 2.0, and network dropout to 0.2. It does not mean is the best but good result to not make so restrictive the character with the base model).
+Important note : settings shown in pictures does not represent the proper one for X purpose, it was just screenshots in different tests.
 
 
 
