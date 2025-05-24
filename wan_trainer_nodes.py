@@ -477,7 +477,7 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
                 "timestep_sampling": (["sigma", "uniform", "sigmoid", "shift"], {"default": "sigma", "tooltip": "Method for sampling the \"timesteps\" of the diffusion process. This affects how the model learns to generate images at different noise stages. `sigma` is a good default."}),
                 "discrete_flow_shift": ("FLOAT", {"default": 3.0, "tooltip": "A specific adjustment for the `shift` timestep sampling method. It's usually not necessary to modify this unless you know what you're doing or are following a very specific guide."}),
                 "num_cpu_threads_per_process": ("INT", {"default": 1, "min": 1, "max": os.cpu_count(), "tooltip": "Number of CPU threads per process for accelerate. Defaults to 1. Set to 0 for auto."}),
-                "max_train_epochs": ("INT", {"default": 16, "min": 0, "max": 128, "tooltip": "Recomended by Wan, max_train_epochs will override max_train_steps to remove the internal limit of 2048 steps for better learning, max_train_step will be = args.max_train_epochs * math.ceil(len(train_dataloader) / accelerator.num_processes / args.gradient_accumulation_steps) "}),
+                "max_train_epochs": ("INT", {"default": 16, "min": 0, "max": 512, "tooltip": "Recomended by Wan, max_train_epochs will override max_train_steps to remove the internal limit of 2048 steps for better learning, max_train_step will be = args.max_train_epochs * math.ceil(len(train_dataloader) / accelerator.num_processes / args.gradient_accumulation_steps) "}),
             },
             "optional": {
                 "network_args_str": ("STRING", {"multiline": True, "default": ""}),
