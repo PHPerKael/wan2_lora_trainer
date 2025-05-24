@@ -4,6 +4,8 @@
 
 
 ✅ LORA STRENGTH FIXED!.
+**Update version 1.01**:
+* Sette up max_train_epochs to 512.
 
 **Update version 1.01**:
 * Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes/workflow).
