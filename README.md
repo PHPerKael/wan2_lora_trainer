@@ -1,3 +1,5 @@
+<h1>ADVERTISMENT : I'm fixing an issue that seems to invalidate the Lora, update comming soon.</h1>
+
 
 ![ComfyUI_00026_](https://github.com/user-attachments/assets/57fdbf91-51d5-43ad-9ec7-3873003dca1b)
 
