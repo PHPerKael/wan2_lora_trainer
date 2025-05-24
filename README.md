@@ -14,6 +14,13 @@
 * Result (text to video generation):
 ![image](https://github.com/user-attachments/assets/dc8d425e-09d7-4e67-985f-cf0bcf782872)
 
+Also playing with image sequences :
+![image](https://github.com/user-attachments/assets/13480d51-e221-48b5-9eed-f2133b92eabc)
+
+
+Result with 0.5 of strenght:
+
+![image](https://github.com/user-attachments/assets/65a94dfe-dcce-4b1d-acea-faac8191109c)
 
 
 
