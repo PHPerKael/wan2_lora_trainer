@@ -24,6 +24,7 @@
 * Made for ComfyUi windows portable package.
 * Automated process for the creation of the TOM file, cache latents, cache texts & trainning run (Nodes triggered by this order to do the complete process in one shot).
 * You can skip latents and text caches if you need to restart the training (taking into account data has not changed vae, clipvision, text models).
+* For more info about setting up correctly parameters you can check the Wan Doc on https://github.com/kohya-ss/musubi-tuner/blob/main/docs/wan.md
 
 
 **Instructions**:
