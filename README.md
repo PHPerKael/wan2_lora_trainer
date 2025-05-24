@@ -4,7 +4,8 @@
 
 
 ✅ LORA STRENGTH FIXED!.
-**Update version 1.01**:
+
+**Update version 1.02**:
 * Sette up max_train_epochs to 512.
 
 **Update version 1.01**:
