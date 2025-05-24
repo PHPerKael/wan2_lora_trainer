@@ -13,10 +13,6 @@
 * Automated process for the creation of the TOM file, cache latents, cache texts & trainning run (Nodes triggered by this order to do the complete process in one shot).
 * You can skip latents and text caches if you need to restart the training (taking into account data has not changed vae, clipvision, text models).
 
-* ![image](https://github.com/user-attachments/assets/cce68c8f-9ae7-4de2-b5a0-be6f0d11b2cd)
-
-
-
 Instructions:
 1. Clone this repository into your custom node folder.
 2. install requirements.txt from custom_nodes\ComfyUI_Wan2_1_lora_trainer :
@@ -29,23 +25,30 @@ Instructions:
 4. Enjoy training.
 
 
-Optional :
-![image](https://github.com/user-attachments/assets/bc07a0f6-1fc3-4f4e-b511-71d8ad8d5b7e)
+Regular run: If you use regular bat you must to bypass compiler an memory settings (attention mode in spda). (Look at the picture)
+![image](https://github.com/user-attachments/assets/03bebfca-79c2-4079-aea4-0f0b7dfc5645)
 
-If you have the last version of torch 2.7.0 cuda and visual studio tools, you can modify your Bat file Comfy runner with this:
+
+
+Torch settings run : 
+If you have the last version of torch 2.7.0 cuda and visual studio tools, you can create/modify a Bat file using the visual Studio environment:
 
 ```
 @echo off
 REM Load Visual Studio Build Tools for the Wan subprocess environment (Optional to use max pow with the musubi compile settings and memory nodes)
 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 REM Start ComfyUI
-.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --fast fp16_accumulation
+.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --use-sage-attention --fast fp16_accumulation
 pause
 ```
+Note : Activating torch wihtout calling the Sage argument will cause an invalid Lora.
+
+Then activate the compiler nodes (choose sage attention o wich one you want based on your configs):
+![image](https://github.com/user-attachments/assets/8982f665-a7bd-47a1-a8eb-ad6bce87b7f2)
+
 
 if you don't have any of this modules you can disconnect the musubi compile settings node.
 
-![image](https://github.com/user-attachments/assets/fc7f34fe-6c47-49d2-a15b-c44232c1db56)
 
 Performances test with 312 images [torch 2.7.0 cuda128 + sage attention] :
 
