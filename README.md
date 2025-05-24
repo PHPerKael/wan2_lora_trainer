@@ -8,6 +8,7 @@ Update version 1.01:
 * Added max_train_epochs argument to avoid the internal step limit of 2048.
 * Fixed scale weight norms.
 * Updated example workflow.
+* Updated pictures.
 * Delete your custom folder and clone again.
 
 Features:
