@@ -11,8 +11,9 @@
 * ![image](https://github.com/user-attachments/assets/17211bb0-ae8d-42b6-a4c1-3610500a62f2)
 * Deconstructed character in pieces:
 * ![image](https://github.com/user-attachments/assets/25a5b432-3c5a-4f25-9d5a-6e1a824c7570)
-* Result:
-![image](https://github.com/user-attachments/assets/13b90695-df68-48b5-bda6-a317d872e77f)
+* Result (text to video generation):
+![image](https://github.com/user-attachments/assets/dc8d425e-09d7-4e67-985f-cf0bcf782872)
+
 
 
 
