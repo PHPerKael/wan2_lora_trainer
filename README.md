@@ -7,6 +7,13 @@ Important note: The sprites used for the training tests are property of real art
 
 ✅ LORA STRENGTH FIXED!.
 
+Tested and working with this package:
+* ComfyUI 0.3.39
+* Python 3.12.10
+* Torch 2.7.0 cuda 128
+* Sage attention 2.1
+
+
 **Update version 1.02**:
 * Setted up max_train_epochs to 512.
 * avr_loss in last update looking great (128 epochs, 30 images + 5000 steps, network dropout 0.2, other settings as home):
