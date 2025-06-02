@@ -53,7 +53,7 @@ Tested and working with this package:
 * For more info about setting up correctly parameters you can check the Wan Doc on https://github.com/kohya-ss/musubi-tuner/blob/main/docs/wan.md
 
 
-* avr_loss in last update looking great (128 epochs, 30 images + 5000 steps, network dropout 0.2, other settings as home):
+* avr_loss in last update looking great (128 epochs, 30 images + 5000 steps, network dropout 0.0, other settings as home):
 * ![image](https://github.com/user-attachments/assets/17211bb0-ae8d-42b6-a4c1-3610500a62f2)
 * Deconstructed character in pieces:
 * ![image](https://github.com/user-attachments/assets/25a5b432-3c5a-4f25-9d5a-6e1a824c7570)
