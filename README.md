@@ -70,7 +70,7 @@ Result with 0.5 of strenght:
 
 **About max_train_epochs**: The max train epochs is an equations that takes into account several arguments as gradients, number of images etc. This must be set up between 16/512 depending of the number of images you want to train. To ensure a little package of 30 images, set up it as 128 to train more than 5000 steps. Take into account network dropout to not overfitting, also dim and alpha. All is relative but for sure you will find you custom setting depending of your purpose. For the moment max train epochs have a limit to 512, but if is needed to add a bigger max value i can update it.
 
-**Instructions**:
+**INSTRUCTIONS**:
 1. Clone this repository into your custom node folder.
 2. install requirements.txt from custom_nodes\ComfyUI_Wan2_1_lora_trainer :
 ```
