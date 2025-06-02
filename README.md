@@ -21,7 +21,8 @@ Failed Lora's configuration:
 * TORCH AND SAGE (not valid config for the moment).
 
 **Strongly recomended to use SPDA attention to get a valid LORA. Why? see the next point below:**
-* Using SPDA Is the only one making a valid Lora for the moment... Testing sage just make the Lora generate noise, so i need to make more testing to see if there is an issue or its just an incompatibility with Sage or setting up other kind of parameter as cpu threads (default is 1 for threads and 2 for n workers). I will update if i found new info about it.
+* Using SPDA Is the only one making a valid Lora for the moment... Setting up SAGE as attention just make the Lora generate noise, so i need to make more proofs to see if there is an issue or its just an incompatibility training with Sage (don't know if this is posible) or something related about tweaking other kind of parameters as cpu threads (default is 1 for threads and 2 for n workers). I will update if i found new info about it, but if you have any relevant data about it don't hesitate to let me know.
+  
 * Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
 ![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
 
@@ -66,13 +67,7 @@ Result with 0.5 of strenght:
 
 ![image](https://github.com/user-attachments/assets/65a94dfe-dcce-4b1d-acea-faac8191109c)
 
-
-
-
-
-
 **About max_train_epochs**: The max train epochs is an equations that takes into account several arguments as gradients, number of images etc. This must be set up between 16/512 depending of the number of images you want to train. To ensure a little package of 30 images, set up it as 128 to train more than 5000 steps. Take into account network dropout to not overfitting, also dim and alpha. All is relative but for sure you will find you custom setting depending of your purpose. For the moment max train epochs have a limit to 512, but if is needed to add a bigger max value i can update it.
-
 
 **Instructions**:
 1. Clone this repository into your custom node folder.
@@ -86,8 +81,8 @@ Result with 0.5 of strenght:
 4. Enjoy training.
 
 
-**In case ComfyUI does not detect CL from visual studio or use Torch** : 
-If you want to use torch (not tested and not sure if this kind of compiling can work for training) or your instalation does not detect the CL tools from visual studio. You can create a custom bat adding a call pointing to your build tool
+**INSTRUCTIONS TO USE TORCH NODES AND BLOCK SWAP (Only compatible with SPDA attention)** : 
+If you want to use TORCH or your instalation does not detect the CL tools from visual studio. CREATE a custom bat adding a call pointing to your build tools (Visual studio build tools need to be installed)
 Example:
 ```
 @echo off
