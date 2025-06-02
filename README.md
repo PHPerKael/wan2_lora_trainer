@@ -22,7 +22,7 @@ Tested and working with this package:
 * TORCH AND SAGE attention.
 
 **Strongly recomended to use SPDA attention to get a valid LORA. Why? see the next point below:**
-* Using SPDA Is the only one making a valid Lora for the moment... Setting up SAGE as attention just make the Lora generate noise, so i need to make more proofs to see if there is an issue or its just an incompatibility training with Sage (don't know if this is posible) or something related about tweaking other kind of parameters as cpu threads (default is 1 for threads and 2 for n workers). I will update if i found new info about it, but if you have any relevant data about it don't hesitate to let me know.
+* Using SPDA Is the only one making a valid Lora for the moment... Setting up SAGE as attention just make the Lora generate noise, so i need to make more proofs to see if there is an issue or its just an incompatibility training with Sage (I don't know if Sage only works by generating and not for training...must to be investigated) or something related about tweaking other kind of parameters as cpu threads (default is 1 for threads and 2 for n workers). I will update if i found new info about it, but if you have any relevant data about it don't hesitate to let me know.
   
 * Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
 ![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
