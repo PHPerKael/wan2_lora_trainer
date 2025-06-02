@@ -11,9 +11,9 @@ Tested and working with this package:
 * ComfyUI 0.3.39
 * Python 3.12.10
 * Torch 2.7.0 cuda 128
-* Sage attention 2.1
 
-Strongly recomended to use the Regular run (without Compiler and memory nodes) and use SPDA attention (Is the only one that i reach to make a valid Lora...Testing sage just make the Lora generate noise), See example below:
+Strongly recomended to use the Regular run to insure your Lora using SPDA attention (Without Compiler and memory nodes). Why? see the next point below :
+* Using SPDA Is the only one making a valid Lora for the moment...Testing sage just make the Lora generate noise, so i need to make more testing to see if there is an issue or is just an incompatibility with Sage or number of processes. I will update with any news.
 * Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
 ![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
 
