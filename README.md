@@ -17,8 +17,9 @@ Tested and working with this package:
 * Regular Run with SPDA attention.
 * TORCH compile (extra nodes) with SPDA attention.
 
-Failed Lora's configuration:
-* TORCH AND SAGE (not valid config for the moment).
+**Non valid Lora's configuration:
+* Regular run and Sage attention.
+* TORCH AND SAGE attention.
 
 **Strongly recomended to use SPDA attention to get a valid LORA. Why? see the next point below:**
 * Using SPDA Is the only one making a valid Lora for the moment... Setting up SAGE as attention just make the Lora generate noise, so i need to make more proofs to see if there is an issue or its just an incompatibility training with Sage (don't know if this is posible) or something related about tweaking other kind of parameters as cpu threads (default is 1 for threads and 2 for n workers). I will update if i found new info about it, but if you have any relevant data about it don't hesitate to let me know.
