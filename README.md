@@ -21,7 +21,7 @@ Failed Lora's configuration:
 * TORCH AND SAGE (not valid config for the moment).
 
 **Strongly recomended to use SPDA attention to get a valid LORA. Why? see the next point below:**
-* Using SPDA Is the only one making a valid Lora for the moment...Testing sage just make the Lora generate noise, so i need to make more testing to see if there is an issue or its just an incompatibility with Sage or number of processes. I will update with any news.
+* Using SPDA Is the only one making a valid Lora for the moment...Testing sage just make the Lora generate noise, so i need to make more testing to see if there is an issue or its just an incompatibility with Sage or setting up other kind of parameter as cpu threads (default is 1 for threads and 2 for n workers). I will update if i found new info about it.
 * Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
 ![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
 
