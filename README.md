@@ -15,7 +15,7 @@ Tested and working with this package:
 
 **Tested and confirmed the already working configurations**:
 * Regular Run with SPDA attention.
-* TORCH compiple (extra nodes) with SPDA attention.
+* TORCH compile (extra nodes) with SPDA attention.
 
 Failed Lora's configuration:
 * TORCH AND SAGE (not valid config for the moment).
