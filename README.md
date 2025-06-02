@@ -13,25 +13,13 @@ Tested and working with this package:
 * Torch 2.7.0 cuda 128
 * Sage attention 2.1
 
+Strongly recomended to use the Regular run (without Compiler and memory nodes) and use SPDA attention (Is the only one that i reach to make it work), See example below:
+* Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
+![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
+
 
 **Update version 1.02**:
 * Setted up max_train_epochs to 512.
-* avr_loss in last update looking great (128 epochs, 30 images + 5000 steps, network dropout 0.2, other settings as home):
-* ![image](https://github.com/user-attachments/assets/17211bb0-ae8d-42b6-a4c1-3610500a62f2)
-* Deconstructed character in pieces:
-* ![image](https://github.com/user-attachments/assets/25a5b432-3c5a-4f25-9d5a-6e1a824c7570)
-* Result (text to video generation):
-![image](https://github.com/user-attachments/assets/dc8d425e-09d7-4e67-985f-cf0bcf782872)
-
-Also playing with image sequences :
-![image](https://github.com/user-attachments/assets/13480d51-e221-48b5-9eed-f2133b92eabc)
-
-
-Result with 0.5 of strenght:
-
-![image](https://github.com/user-attachments/assets/65a94dfe-dcce-4b1d-acea-faac8191109c)
-
-
 
 **Update version 1.01**:
 * Fixed as default the learning parameters (A good starting point to see quickly results just loading the nodes/workflow).
@@ -55,6 +43,26 @@ Result with 0.5 of strenght:
 * For more info about setting up correctly parameters you can check the Wan Doc on https://github.com/kohya-ss/musubi-tuner/blob/main/docs/wan.md
 
 
+* avr_loss in last update looking great (128 epochs, 30 images + 5000 steps, network dropout 0.2, other settings as home):
+* ![image](https://github.com/user-attachments/assets/17211bb0-ae8d-42b6-a4c1-3610500a62f2)
+* Deconstructed character in pieces:
+* ![image](https://github.com/user-attachments/assets/25a5b432-3c5a-4f25-9d5a-6e1a824c7570)
+* Result (text to video generation):
+![image](https://github.com/user-attachments/assets/dc8d425e-09d7-4e67-985f-cf0bcf782872)
+
+Also playing with image sequences :
+![image](https://github.com/user-attachments/assets/13480d51-e221-48b5-9eed-f2133b92eabc)
+
+
+Result with 0.5 of strenght:
+
+![image](https://github.com/user-attachments/assets/65a94dfe-dcce-4b1d-acea-faac8191109c)
+
+
+
+
+
+
 **About max_train_epochs**: The max train epochs is an equations that takes into account several arguments as gradients, number of images etc. This must be set up between 16/512 depending of the number of images you want to train. To ensure a little package of 30 images, set up it as 128 to train more than 5000 steps. Take into account network dropout to not overfitting, also dim and alpha. All is relative but for sure you will find you custom setting depending of your purpose. For the moment max train epochs have a limit to 512, but if is needed to add a bigger max value i can update it.
 
 
@@ -70,18 +78,15 @@ Result with 0.5 of strenght:
 4. Enjoy training.
 
 
-Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
-![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
-
-**Torch settings run** : 
-Run 14B are a heavy process so, highly recomended an instalation of torch >=2.7.0 cuda128 and visual studio tools. After this you must create your custom Bat file adding the visual Studio environment.
-Example, if you want a bat that use sage attention and also train with musubi compile settings then create it as this:
+**In case ComfyUI does not detect CL from visual studio or use Torch** : 
+If you want to use torch (not tested and not sure if this kind of compiling can work for training) or your instalation does not detect the CL tools from visual studio. You can create a custom bat adding a call pointing to your build tool
+Example:
 ```
 @echo off
 REM Load Visual Studio Build Tools for the Wan subprocess environment (Optional to use max pow with the musubi compile settings and memory nodes)
 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 REM Start ComfyUI
-.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --use-sage-attention --fast fp16_accumulation
+.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build 
 pause
 ```
 **NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but needs its own Visual Studio environment to work.
