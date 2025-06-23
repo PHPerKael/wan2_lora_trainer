@@ -27,7 +27,7 @@ Tested and working with this package:
 * Regular run: If you use regular bat you must to bypass compiler an memory settings, enough for 1.3B models. (attention mode in spda, default parameters already configured for inmediate results)
 ![image](https://github.com/user-attachments/assets/9bd03153-622e-45e9-8bc6-b8697620e8cf)
 
-**Update version 1.1 (Not released)**:
+**Update version 1.1.0 (Not released)**:
 * Version 1.1 is comming for training 14B models with LOW VRAM (>= 12GB) and block swap fixes (blocks swaps are not applied correctly in 1.01). The version is in testing phase. Update soon...
 
 **Update version 1.02**:
