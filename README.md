@@ -3,7 +3,7 @@
 <div align="center"><h1>ComfyUI MUSUBI-TUNNER WAN LORA TRAINER</h1></div>
 
 
-UPDATE 1.1 is comming for training 14B models with LOW VRAM (>= 12GB) and block swap fixes (blocks swaps does not applied correctly in 1.01). The version is in testing phase. Update soon...
+UPDATE 1.1 is comming for training 14B models with LOW VRAM (>= 12GB) and block swap fixes (blocks swaps are not applied correctly in 1.01). The version is in testing phase. Update soon...
 
 Important note: The sprites used for the training tests are property of real artirsts (under copyright), so this is not only a copy of the world, it can be a tool for artists too.
 
