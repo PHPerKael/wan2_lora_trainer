@@ -84,7 +84,7 @@ Result with 0.5 of strenght:
 4. Enjoy training.
 
 
-**INSTRUCTIONS TO USE TORCH NODES AND BLOCK SWAP (Only compatible with SPDA attention)** : 
+**INSTRUCTIONS TO USE TORCH NODES AND BLOCK SWAP (Only compatible with SPDA/xformers attention)** : 
 If you want to use TORCH or your instalation does not detect the CL tools from visual studio. CREATE a custom bat adding a call pointing to your build tools (Visual studio build tools need to be installed)
 Example:
 ```
