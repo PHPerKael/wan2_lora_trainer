@@ -55,6 +55,20 @@ Tested and working with this package:
 * For more info about setting up correctly parameters you can check the Wan Doc on https://github.com/kohya-ss/musubi-tuner/blob/main/docs/wan.md
 
 
+**Default config by musubi**
+
+    accelerate launch --num_cpu_threads_per_process 1 --mixed_precision bf16 src/musubi_tuner/wan_train_network.py 
+    --task t2v-1.3B 
+    --dit path/to/wan2.1_xxx_bf16.safetensors 
+    --dataset_config path/to/toml --sdpa --mixed_precision bf16 --fp8_base 
+    --optimizer_type adamw8bit --learning_rate 2e-4 --gradient_checkpointing 
+    --max_data_loader_n_workers 2 --persistent_data_loader_workers 
+    --network_module networks.lora_wan --network_dim 32 
+    --timestep_sampling shift --discrete_flow_shift 3.0 
+    --max_train_epochs 16 --save_every_n_epochs 1 --seed 42
+    --output_dir path/to/output_dir --output_name name-of-lora
+
+    
 * avr_loss in last update looking great (128 epochs, 30 images + 5000 steps, network dropout 0.0, other settings as home):
 * ![image](https://github.com/user-attachments/assets/17211bb0-ae8d-42b6-a4c1-3610500a62f2)
 * Deconstructed character in pieces:
