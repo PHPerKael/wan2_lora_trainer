@@ -16,7 +16,7 @@ Update version 1.1.0:
 
 * Added Sampler node to generate images every n steps or epochs (Images are in the folder "sample" in your output Lora path).
 * BlockSwap node fix triggering it to the launcher.
-* Network weights fix triggering the assigned path (now you are able to train from a previous lora setting the her's path location).
+* Network weights fix triggering the assigned path (now you are able to train from a previous lora assigning her's path location).
 * Network args trigger fix.
 * Optimizer args trigger fix.
 * Tom argument image extension setted up to ".txt" as default.
