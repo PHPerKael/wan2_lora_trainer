@@ -24,7 +24,7 @@ Update version 1.1.0:
 * Max train step setted up to 2048 as default (taking in account this set is multiplied by epochs and images).
 * Setted up timestep_sampling to "shift" as default.
 * Setted up epoch to 128 as default.
-* Added 2 example workflows for 14B and 1.3B models (located in the folder "workflows", you can also download form the website).
+* Added 2 example workflows for 14B and 1.3B models, (located in the folder "workflows", you can also download form the website).
 * Code improvements.
 * Code mods for full compatibility with the last version of ComfyUi.
 * Added 6 nodes for training.
