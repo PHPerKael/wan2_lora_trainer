@@ -82,6 +82,11 @@ def main():
         if hasattr(args, "save_every_n_epochs") and args.save_every_n_epochs == 0:
             args.save_every_n_epochs = None
             #print(f"[run_wan_training] Converted args.save_every_n_epochs from 0 to None (inside run_wan_training.py).", file=sys.stderr)
+        if hasattr(args, "sample_every_n_steps") and args.sample_every_n_steps == 0:
+            args.sample_every_n_steps = None
+        
+        if hasattr(args, "sample_every_n_epochs") and args.sample_every_n_epochs == 0:
+            args.sample_every_n_epochs = None
       
         # --- FIN DE LA CORRECCIÓN ---
         

@@ -12,6 +12,7 @@ import subprocess
 import shutil
 import sys
 import re
+from .musubi_utils import models_combo, vaes_combo, encoders_combo, clip_vision_files
 
 
 
@@ -142,7 +143,7 @@ class WanDatasetConfig: # This node is working, keep as is
         return {"required": {"output_filename_prefix": ("STRING", {"default": "musubi_dataset_config", "tooltip": "Generates the training dataset with the specified settings, this will set the training resolution. Override is needed to swap the 512 default res."}),
                              "general_resolution_width": ("INT", {"default": 512, "tooltip": "The general width for training images. This is the base resolution for your dataset, especially when buckets are disabled or for initial scaling."}),
                              "general_resolution_height": ("INT", {"default": 512, "tooltip": "The general height for training images. This is the base resolution for your dataset, especially when buckets are disabled or for initial scaling."}),
-                             "general_caption_extension": ("STRING", {"tooltip": "The file extension for your caption (description) files (e.g., '.txt'). These files contain the text describing each image in your dataset."}),
+                             "general_caption_extension": ("STRING", {"default": ".txt", "tooltip": "The file extension for your caption (description) files (e.g., '.txt'). These files contain the text describing each image in your dataset."}),
                              "general_batch_size": ("INT", {"default": 1, "tooltip": "The number of images processed simultaneously by the model during training. A higher batch size can speed up training but requires more VRAM."}, ),
                              "general_enable_bucket": ("BOOLEAN", {"default": True, "tooltip": "If enabled, images will be grouped into 'buckets' (different resolutions with similar aspect ratios) to optimize VRAM usage and prevent image distortion during training. Recommended to keep enabled."}),
                              "general_bucket_no_upscale": ("BOOLEAN", {"default": False, "tooltip": "If 'Enable Bucket' is active and this is true, images will only be downscaled to fit a bucket's resolution, never upscaled. This can prevent blurry images but might make small images too small."}),
@@ -159,7 +160,9 @@ class WanDatasetConfig: # This node is working, keep as is
     FUNCTION = "generate_config";
     CATEGORY = "musubi-tuner/wan/config"
     def generate_config(self, output_filename_prefix, general_resolution_width, general_resolution_height, general_caption_extension, general_batch_size, general_enable_bucket, general_bucket_no_upscale, dataset1_image_directory, dataset1_cache_directory, dataset1_num_repeats, dataset1_override_resolution, dataset1_resolution_width, dataset1_resolution_height):
-        node_name_print = f"[MusubiTuner {self.NODE_NAME}]"; print(f"{node_name_print} generate_config called."); config_dict = {"general": {"resolution": [general_resolution_height, general_resolution_width],"caption_extension": general_caption_extension, "batch_size": general_batch_size,"enable_bucket": general_enable_bucket, "bucket_no_upscale": general_bucket_no_upscale},"datasets": []}; dataset1_config_entry = {"image_directory": dataset1_image_directory.replace("\\", "/"),"cache_directory": dataset1_cache_directory.replace("\\", "/"),"num_repeats": dataset1_num_repeats};_ = dataset1_override_resolution and dataset1_config_entry.update({"resolution": [dataset1_resolution_height, dataset1_resolution_width]}); config_dict["datasets"].append(dataset1_config_entry); output_main_dir = folder_paths.get_output_directory(); node_output_dir = os.path.join(output_main_dir, "musubi_tuner_configs");
+        node_name_print = f"[MusubiTuner {self.NODE_NAME}]"; print(f"{node_name_print} generate_config called."); 
+        config_dict = {"general": {"resolution": [general_resolution_height, general_resolution_width],"caption_extension": general_caption_extension, "batch_size": general_batch_size,"enable_bucket": general_enable_bucket, "bucket_no_upscale": general_bucket_no_upscale},"datasets": []}; 
+        dataset1_config_entry = {"image_directory": dataset1_image_directory.replace("\\", "/"),"cache_directory": dataset1_cache_directory.replace("\\", "/"),"num_repeats": dataset1_num_repeats, "enable_bucket": general_enable_bucket, "bucket_no_upscale": general_bucket_no_upscale};_ = dataset1_override_resolution and dataset1_config_entry.update({"resolution": [dataset1_resolution_height, dataset1_resolution_width]}); config_dict["datasets"].append(dataset1_config_entry); output_main_dir = folder_paths.get_output_directory(); node_output_dir = os.path.join(output_main_dir, "musubi_tuner_configs");
         if not os.path.exists(node_output_dir):
             try: os.makedirs(node_output_dir)
             except Exception as e_mkdir: print(f"{node_name_print} Error creating dir: {str(e_mkdir)}"); traceback.print_exc(); return (f"ERROR_DIR", "config_error")
@@ -452,7 +455,7 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
                 "output_dir": ("STRING", {"default": os.path.join(folder_paths.get_output_directory(), "musubi_loras") , "tooltip": "The folder where your LoRA will be saved once training is complete. By default, it will be saved in ComfyUI's `output` folder."}),
                 "output_name": ("STRING", {"default": "my_wan_lora", "tooltip": "The name you'll give your final LoRA file. For example, if you enter \"my_character\", the file will be named `my_character.safetensors`."}),
                 "task": (wan_tasks_list, {"default": "t2v-1.3B", "tooltip": "Defines the type of task you want the model to learn (e.g., generating video from text). This should match the capability of your base model (e.g., t2v-1.3B for Text-to-Video with 1.3 billion parameters)."}),
-                "max_train_steps": ("INT", {"default": 1000, "tooltip": "Total number of training \"steps\" or iterations the model will perform. More steps mean longer training, but not always better quality (can lead to \"overfitting\")."}),
+                "max_train_steps": ("INT", {"default": 2048, "tooltip": "Total number of training \"steps\" or iterations the model will perform. More steps mean longer training, but not always better quality (can lead to \"overfitting\")."}),
                 "learning_rate": ("FLOAT", {"default": 2e-4, "step": 0.000001, "tooltip": "The \"speed\" at which the model learns from its mistakes. A very high value can lead to unstable or poor learning; too low, and training will be very slow. This is a very important parameter to adjust."}),
                 "optimizer_type": (["AdamW", "AdamW8bit", "Adafactor", "Lion", "Prodigy", "DAdaptAdam"], {"default": "AdamW8bit", "tooltip": "The \"engine\" or algorithm that adjusts the LoRA's weights during training for efficient learning. `AdamW8bit` is a common and memory-efficient option."}),
                 "lr_scheduler": (["constant", "constant_with_warmup", "linear", "cosine"], {"default": "cosine", "tooltip": "Defines how the `learning_rate` (learning speed) changes throughout training. For example, `cosine` gradually decreases the speed towards the end, while `constant` keeps it the same."}),
@@ -474,18 +477,19 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
                 "save_every_n_epochs": ("INT", {"default": 1, "tooltip": "Saves a copy (checkpoint) of the LoRA every certain number of \"epochs\" (when it has processed all training data once). Useful for saving stable versions. Set to `0` to not save by epochs."}),
                 "save_state": ("BOOLEAN", {"default": False, "tooltip": "Whether to save the full training \"state\" (not just the LoRA file). This allows you to resume training exactly where you left off if it's interrupted or if you want to perform more steps later."}),  
                 "scale_weight_norms": ("FLOAT", {"default": 1.0, "tooltip": "Adjusts the \"strength\" of the LoRA weights during training. A small value can help keep the LoRA more subtle and closer to the base model. (If set to `0.0`, it means it's not used)."}),
-                "timestep_sampling": (["sigma", "uniform", "sigmoid", "shift"], {"default": "sigma", "tooltip": "Method for sampling the \"timesteps\" of the diffusion process. This affects how the model learns to generate images at different noise stages. `sigma` is a good default."}),
+                "timestep_sampling": (["sigma", "uniform", "sigmoid", "shift"], {"default": "shift", "tooltip": "Method for sampling the \"timesteps\" of the diffusion process. This affects how the model learns to generate images at different noise stages. `sigma` is a good default."}),
                 "discrete_flow_shift": ("FLOAT", {"default": 3.0, "tooltip": "A specific adjustment for the `shift` timestep sampling method. It's usually not necessary to modify this unless you know what you're doing or are following a very specific guide."}),
                 "num_cpu_threads_per_process": ("INT", {"default": 1, "min": 1, "max": os.cpu_count(), "tooltip": "Number of CPU threads per process for accelerate. Defaults to 1. Set to 0 for auto."}),
-                "max_train_epochs": ("INT", {"default": 16, "min": 0, "max": 512, "tooltip": "Recomended by Wan, max_train_epochs will override max_train_steps to remove the internal limit of 2048 steps for better learning, max_train_step will be = args.max_train_epochs * math.ceil(len(train_dataloader) / accelerator.num_processes / args.gradient_accumulation_steps) "}),
+                "max_train_epochs": ("INT", {"default": 128, "min": 0, "max": 512, "tooltip": "Recomended by Wan, max_train_epochs will override max_train_steps to remove the internal limit of 2048 steps for better learning, max_train_step will be = args.max_train_epochs * math.ceil(len(train_dataloader) / accelerator.num_processes / args.gradient_accumulation_steps) "}),
             },
             "optional": {
-                "network_args_str": ("STRING", {"multiline": True, "default": ""}),
-                "optimizer_args_str": ("STRING", {"multiline": True, "default": ""}),
-                "network_weights_path": ("STRING", {"default": "", "tooltip": "Path to an existing network (e.g., a pre-trained LoRA or a checkpoint) to load its weights. Useful for resuming training or fine-tuning an existing LoRA."}),
+                "network_args": ("STRING", {"multiline": True, "default": ""}),
+                "optimizer_args": ("STRING", {"multiline": True, "default": ""}),
+                "network_weights": ("STRING", {"default": "", "tooltip": "Path to an existing network (e.g., a pre-trained LoRA or a checkpoint) to load its weights. Useful for resuming training or fine-tuning an existing LoRA."}),
                 "training_comment": ("STRING", {"multiline": True, "default": ""}),
                 "compile_settings": ("DICT", {"forceInput": True, "default": {}}),
                 "memory_settings" : ("DICT", {"forceInput": True, "default": {}}),
+                "sampling_settings": ("DICT", {"forceInput": True, "default": {}}),
                 # --- Recordatorios para futuro nodo Hunyuan y/o logs para wan (comentados) ---
                 # "# Hunyuan: lr_warmup_steps_ratio": ("FLOAT", {"default": 0.05}),
                 # "# Hunyuan: dit_dtype_override": (["auto", "bfloat16", "float16", "float32"], {"default": "auto"}),
@@ -585,8 +589,14 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
         incoming_memory_settings = kwargs.pop("memory_settings", {})
 
         if incoming_memory_settings:
-           print(f"{node_name_print} Received compile_settings: {incoming_memory_settings}")
-           args_dict.update(incoming_compile_settings)
+           print(f"{node_name_print} Received memory_settings: {incoming_memory_settings}") # Corregido el print
+           args_dict.update(incoming_memory_settings) # Correcto: Merge memory_settings
+
+        incoming_sampling_settings = kwargs.pop("sampling_settings", {})
+
+        if incoming_sampling_settings:
+           print(f"{node_name_print} Received sampling_settings: {incoming_sampling_settings}") 
+           args_dict.update(incoming_sampling_settings) 
 
         # --- FIN DE LA NUEVA LÓGICA ---
 
@@ -605,9 +615,9 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
             if key in ["dit_name", "vae_name", "t5_name", "clip_name", "dataset_config_toml", "trigger_in"]:
                 continue # Ya manejados o no son argumentos del script
 
-            if key == "network_args_str":
+            if key == "network_args":
                 args_dict["network_args"] = [s.strip() for s in value.splitlines() if s.strip()] if value and value.strip() else []
-            elif key == "optimizer_args_str":
+            elif key == "optimizer_args":
                 args_dict["optimizer_args"] = [s.strip() for s in value.splitlines() if s.strip()] if value and value.strip() else []
             else:
                 args_dict[key] = value
@@ -740,7 +750,7 @@ class WanLoRATrainer: # DUMMY EXECUTION, REAL INPUTS
                         cmd.append(str(item))
             elif key == "training_comment" and not value.strip(): # No pasar training_comment si está vacío
                 continue
-            elif key == "network_weights_path" and not value.strip(): # No pasar network_weights_path si está vacío
+            elif key == "network_weights" and not value.strip(): # No pasar network_weights_path si está vacío
                 continue
             else:
                 cmd.append(f"--{key}")
