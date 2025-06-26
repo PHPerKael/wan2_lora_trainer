@@ -47,7 +47,7 @@ Performances test with 312 images with default settings (spda) :
 1. Clone this repository into your custom node folder.
 2. install requirements.txt from custom_nodes\ComfyUI_Wan2_1_lora_trainer :
 ```  
- ..\..\..\python -m pip install -r requirements.txt
+ ..\..\..\pyton_embeded\python -m pip install -r requirements.txt
 ````
 3. run comfyUi
 4. Enjoy training.
