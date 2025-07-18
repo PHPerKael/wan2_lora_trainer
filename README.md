@@ -62,7 +62,7 @@ If you want to use musubi compile setting you must to create your custom bat and
 REM Load Visual Studio Build Tools for the Wan subprocess environment (Optional to use max pow with the musubi compile settings and memory nodes)
 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 REM Start ComfyUI
-.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --use-sage-attention --fast fp16_accumulation
+.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build
 pause
 ```
 **NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but is needed to setup ComfyUI as root path to work with.
