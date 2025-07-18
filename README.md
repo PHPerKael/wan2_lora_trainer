@@ -9,8 +9,8 @@
 
 
 
-Tested environment (This is made for ComfyUI windows portable, not tested in other envirionments, you are free to fork the project to make it compatible in different instalations) :
-* ComfyUI Portable 3.3.4. (last versions)
+**Tested environment** (This is made for ComfyUI windows portable, not tested in other envirionments, you are free to fork the project to make it compatible in different instalations) :
+* ComfyUI Portable 0.3.44 (last versions)
 * Python 3.12
   
 **2025: June 25** 
