@@ -14,6 +14,7 @@
 * Python 3.12
 * Visual Studio tools (seems to be needed for path compatibility).
 * Pytorch 2.7.1 cuda 128
+*  **Don't use Sageattention**.
   
 **2025: June 25** 
 Update version 1.1.0:
