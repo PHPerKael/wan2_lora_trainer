@@ -59,10 +59,10 @@ Performances test with 312 images with default settings (spda) :
 4. Enjoy training.
 
 
-If you want to use musubi compile setting you must to create your custom bat and run ComfyUi from it (with you desired configs for ComfyUI) Example:
+You must to create your custom bat adding  and run ComfyUi from it to avoid issues with paths. Example:
 ```
 @echo off
-REM Load Visual Studio Build Tools for the Wan subprocess environment (Optional to use max pow with the musubi compile settings and memory nodes)
+REM Load Visual Studio Build Tools for the Wan subprocess environment
 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build
@@ -72,17 +72,11 @@ pause
 
 **CLIP VISION** : Clip vision is just setted up for I2V models, for training T2V Models, set clip to None. 
 
-**NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but needs its own Visual Studio environment to work.
-
-**CLIP VISION** : Clip vision is just setted up for I2V models, for training T2V Models, set clip to None. 
-
-if you don't have any of this modules you can disconnect the musubi compile settings node.
-
 * Path into an empty folder for the cache (use different folders for each lora to not mix you cache data (cleaner and probably faster).
 Then conect the compiler and memory nodes and choose the attention [SPDA, XFORMERS] (Sage seems to burn the Lora, avoid it for the moment):
 ![image](https://github.com/user-attachments/assets/63f8862e-544d-4718-89f1-1c34067e5ee1)
 
-if you don't have any of this modules you can bypass the musubi compile settings node and memory (not need for 1.3B models in most cases, but necesary if you have very low VRAM):
+If you have high VRAM you can bybass Torch compile, memory settings. Also if you don't need to see the progress you can bypass sampling settings:
 ![image](https://github.com/user-attachments/assets/b4624251-88f4-4f1b-95ab-116ac2042a0d)
 
 
@@ -94,7 +88,7 @@ if you don't have any of this modules you can bypass the musubi compile settings
 * Image data input are not exclusive to videos! you can train just with images as the following example (path to your images and text captions):
 ![Captura de pantalla 2025-05-23 161441](https://github.com/user-attachments/assets/465448fe-f347-431f-b3e7-e13436d5c039)
 
-* Performances test with 312 images with default settings (spda) :
+* Performances test with 312 images with 1.3B T2v, default settings (spda) :
 ![image](https://github.com/user-attachments/assets/15222364-f1db-42fa-abf3-0ccc08a953b5)
 
 And the results :
