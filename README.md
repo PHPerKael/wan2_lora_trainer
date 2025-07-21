@@ -12,6 +12,8 @@
 **Tested environment** (This is made for ComfyUI windows portable, not tested in other envirionments, you are free to fork the project to make it compatible in different instalations) :
 * ComfyUI Portable 0.3.44 (last versions)
 * Python 3.12
+* Visual Studio tools (seems to be needed for path compatibility).
+* Pytorch 2.7.1 cuda 128
   
 **2025: June 25** 
 Update version 1.1.0:
