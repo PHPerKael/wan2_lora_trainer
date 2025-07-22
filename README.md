@@ -81,10 +81,6 @@ If you have high VRAM you can bybass Torch compile, memory settings. Also if you
 ![Captura de pantalla 2025-05-23 161441](https://github.com/user-attachments/assets/465448fe-f347-431f-b3e7-e13436d5c039)
 
 
-
-* Image data input are not exclusive to videos! you can train just with images as the following example (path to your images and text captions):
-![Captura de pantalla 2025-05-23 161441](https://github.com/user-attachments/assets/465448fe-f347-431f-b3e7-e13436d5c039)
-
 * Performances test with 312 images with 1.3B T2v, default settings (spda) :
 ![image](https://github.com/user-attachments/assets/15222364-f1db-42fa-abf3-0ccc08a953b5)
 
