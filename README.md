@@ -56,10 +56,7 @@ Performances test with 312 images with default settings (spda) :
  ..\..\..\python_embeded\python -m pip install -r requirements.txt
 ````
 3. run comfyUi
-4. Enjoy training.
-
-
-You must to create your custom bat adding  and run ComfyUi from it to avoid issues with paths. Example:
+4. You must to create your custom bat adding  and run ComfyUi from it to avoid issues with paths. You can name it "Run_Wan_LoRa_trainer.bat" (this gives you the ability to connect Musubi with the workflow) Example:
 ```
 @echo off
 REM Load Visual Studio Build Tools for the Wan subprocess environment
