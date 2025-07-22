@@ -65,6 +65,7 @@ REM Start ComfyUI
 pause
 ```
 4. Run ComfyUI from your custom bat. Enjoy.
+
 **NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but is needed to setup ComfyUI as root path to work with.
 
 **CLIP VISION** : Clip vision is just setted up for I2V models, for training T2V Models, set clip to None. 
