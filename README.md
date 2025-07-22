@@ -55,8 +55,7 @@ Performances test with 312 images with default settings (spda) :
 ```  
  ..\..\..\python_embeded\python -m pip install -r requirements.txt
 ````
-3. run comfyUi
-4. You must to create your custom bat adding  and run ComfyUi from it to avoid issues with paths. You can name it "Run_Wan_LoRa_trainer.bat" (this gives you the ability to connect Musubi with the workflow) Example:
+3. You must to create your custom bat adding  and run ComfyUi from it to avoid issues with paths. You can name it "Run_Wan_LoRa_trainer.bat" (this gives you the ability to connect Musubi with the workflow) Example:
 ```
 @echo off
 REM Load Visual Studio Build Tools for the Wan subprocess environment
@@ -65,6 +64,7 @@ REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build
 pause
 ```
+4. Run ComfyUI from your custom bat. Enjoy.
 **NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but is needed to setup ComfyUI as root path to work with.
 
 **CLIP VISION** : Clip vision is just setted up for I2V models, for training T2V Models, set clip to None. 
