@@ -14,7 +14,7 @@
 * Python 3.12
 * Visual Studio tools (seems to be needed for path compatibility).
 * Pytorch 2.7.1 cuda 128
-* Include package python scrpits for 3.12 (In case you don't have it see the tutorial installtion below).
+* Include package python scripts for 3.12 (In case you don't have it see the tutorial installtion below).
 * Custom bat file (see installation below).
 *  **Don't use Sageattention**.
   
