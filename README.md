@@ -14,6 +14,7 @@
 * Python 3.12
 * Visual Studio tools (seems to be needed for path compatibility).
 * Pytorch 2.7.1 cuda 128
+* Include package python scrpits for 3.12(In case you don't have it see the tutorial installtion below)
 * Custom bat file (see installation below).
 *  **Don't use Sageattention**.
   
@@ -65,7 +66,8 @@ REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build
 pause
 ```
-4. Run ComfyUI from your custom bat. Enjoy.
+4. Path fixes : Extract the include package into the folder "Include" of your python environment (python_embeded/Include).
+5. Run ComfyUI from your custom bat. Enjoy.
 
 **NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but is needed to setup ComfyUI as root path to work with.
 
