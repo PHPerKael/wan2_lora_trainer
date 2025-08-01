@@ -19,7 +19,7 @@
 *  **Don't use Sageattention**.
 
 **2025: August 1**
-* Added Include package zip (this python scripts must to be into the Include folder of your environment (python_embeded/Include/<--).
+* Added Include_package.zip (this python scripts must to be into the Include folder of your environment (python_embeded/Include/<--).
   
 **2025: June 25** 
 Update version 1.1.0:
@@ -69,7 +69,7 @@ REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build
 pause
 ```
-4. Path fixes : Extract the include package into the folder "Include" of your python environment (python_embeded/Include).
+4. Extract the Include_package.zip into the folder "Include" of your python environment (python_embeded/Include).
 5. Run ComfyUI from your custom bat. Enjoy.
 
 **NOTE** : The reason of adding this windows call is because the Trainer runs in a new sub process inheriting the ComfyUI environment, but is needed to setup ComfyUI as root path to work with.
