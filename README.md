@@ -17,6 +17,9 @@
 * "Include python scripts" Zip-package for 3.12 (In case you don't have it see the tutorial installtion below).
 * Custom bat file (see installation below).
 *  **Don't use Sageattention**.
+
+**2025: August 1**
+* Added Include package zip (this python scripts must to be into the Include folder of your environment (python_embeded/Include/<--).
   
 **2025: June 25** 
 Update version 1.1.0:
