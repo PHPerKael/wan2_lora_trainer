@@ -19,7 +19,7 @@
 *  **Don't use Sageattention**.
 
 **2025: August 1**
-* Added Include_package.zip (this python scripts must to be into the Include folder of your environment (python_embeded/Include/<--).
+* Added Include_package.zip (Extract this python into the "Include" folder of your environment (python_embeded/Include/<--).
   
 **2025: June 25** 
 Update version 1.1.0:
