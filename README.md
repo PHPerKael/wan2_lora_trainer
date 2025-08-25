@@ -69,7 +69,7 @@ REM Start ComfyUI
 .\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build
 pause
 ```
-4. Extract the Include_package.zip into the folder "Include" of your python environment (python_embeded/Include).
+4. Extract the Include_package.zip, place the folder "Include" of your python environment (python_embeded/Include) and "libs" into (python_embeded/).
 5. Run ComfyUI from your custom bat. Enjoy.
 6. Remember to have the folder "libs" in your python embeded folder with this two dev files :
 7. <img width="660" height="90" alt="image" src="https://github.com/user-attachments/assets/cdc801d9-b683-408c-af18-d144bfbe622f" />
