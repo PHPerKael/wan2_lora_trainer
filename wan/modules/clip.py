@@ -10,9 +10,9 @@ import torch.nn.functional as F
 import torchvision.transforms as T
 from accelerate import init_empty_weights
 
-from attention import flash_attention
-from tokenizers import HuggingfaceTokenizer
-from xlm_roberta import XLMRoberta
+from wan.modules.attention import flash_attention
+from wan.modules.tokenizers import HuggingfaceTokenizer
+from wan.modules.xlm_roberta import XLMRoberta
 
 from train_utils.safetensors_utils import load_safetensors
 

@@ -8,7 +8,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from tokenizers import HuggingfaceTokenizer
+from wan.modules.tokenizers import HuggingfaceTokenizer
 from accelerate import init_empty_weights
 from safetensors.torch import load_file
 
