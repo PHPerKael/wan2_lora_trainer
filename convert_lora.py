@@ -3,7 +3,7 @@ import argparse
 import torch
 from safetensors.torch import load_file, save_file
 from safetensors import safe_open
-from .train_utils import model_utils
+from train_utils import model_utils
 
 import logging
 

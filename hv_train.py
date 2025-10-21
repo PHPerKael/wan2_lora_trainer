@@ -31,17 +31,17 @@ from diffusers.optimization import (
     TYPE_TO_SCHEDULER_FUNCTION as DIFFUSERS_TYPE_TO_SCHEDULER_FUNCTION,
 )
 from transformers.optimization import SchedulerType, TYPE_TO_SCHEDULER_FUNCTION
-from .modules.scheduling_flow_match_discrete import FlowMatchDiscreteScheduler
-from .networks import lora as lora_module
+from modules.scheduling_flow_match_discrete import FlowMatchDiscreteScheduler
+from networks import lora as lora_module
 
-from .dataset import config_utils
-from .hunyuan_model.models import load_transformer, get_rotary_pos_embed_by_shape
-from .hunyuan_model import text_encoder as text_encoder_module
-from .hunyuan_model.vae import load_vae
-from .hunyuan_model import vae as vae_module
-from .dataset.config_utils import BlueprintGenerator, ConfigSanitizer
-from .dataset.image_video_dataset import ARCHITECTURE_HUNYUAN_VIDEO
-from .train_utils import huggingface_utils, model_utils, train_utils, sai_model_spec
+from dataset import config_utils
+from hunyuan_model.models import load_transformer, get_rotary_pos_embed_by_shape
+from hunyuan_model import text_encoder as text_encoder_module
+from hunyuan_model.vae import load_vae
+from hunyuan_model import vae as vae_module
+from dataset.config_utils import BlueprintGenerator, ConfigSanitizer
+from dataset.image_video_dataset import ARCHITECTURE_HUNYUAN_VIDEO
+from train_utils import huggingface_utils, model_utils, train_utils, sai_model_spec
 
 import logging
 

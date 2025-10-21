@@ -6,7 +6,7 @@ import shutil
 import accelerate
 import torch
 
-from . import huggingface_utils
+import huggingface_utils
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)

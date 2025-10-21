@@ -7,17 +7,17 @@ import torch
 import torch.nn as nn
 from torch.utils.checkpoint import checkpoint
 
-from .activation_layers import get_activation_layer
-from .norm_layers import get_norm_layer
-from .embed_layers import TimestepEmbedder, PatchEmbed, TextProjection
-from .attention import attention, parallel_attention, get_cu_seqlens
-from .posemb_layers import apply_rotary_emb
-from .mlp_layers import MLP, MLPEmbedder, FinalLayer
-from .modulate_layers import ModulateDiT, modulate, apply_gate
-from .token_refiner import SingleTokenRefiner
-from ..modules.custom_offloading_utils import ModelOffloader, synchronize_device, clean_memory_on_device
-from .posemb_layers import get_nd_rotary_pos_embed
-from ..train_utils.safetensors_utils import MemoryEfficientSafeOpen
+from hunyuan_model.activation_layers import get_activation_layer
+from hunyuan_model.norm_layers import get_norm_layer
+from hunyuan_model.embed_layers import TimestepEmbedder, PatchEmbed, TextProjection
+from hunyuan_model.attention import attention, parallel_attention, get_cu_seqlens
+from hunyuan_model.posemb_layers import apply_rotary_emb
+from hunyuan_model.mlp_layers import MLP, MLPEmbedder, FinalLayer
+from hunyuan_model.modulate_layers import ModulateDiT, modulate, apply_gate
+from hunyuan_model.token_refiner import SingleTokenRefiner
+from modules.custom_offloading_utils import ModelOffloader, synchronize_device, clean_memory_on_device
+from hunyuan_model.posemb_layers import get_nd_rotary_pos_embed
+from train_utils.safetensors_utils import MemoryEfficientSafeOpen
 
 
 class MMDoubleStreamBlock(nn.Module):

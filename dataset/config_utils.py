@@ -18,7 +18,7 @@ from voluptuous import Any, ExactSequence, MultipleInvalid, Object, Schema, Opti
 # Corrected relative import for image_video_dataset
 # This assumes image_video_dataset.py is in the SAME directory as this config_utils.py
 # and dataset/ has an __init__.py
-from .image_video_dataset import DatasetGroup, ImageDataset, VideoDataset, ARCHITECTURE_WAN, ARCHITECTURE_HUNYUAN_VIDEO
+from image_video_dataset import DatasetGroup, ImageDataset, VideoDataset, ARCHITECTURE_WAN, ARCHITECTURE_HUNYUAN_VIDEO
 
 import logging
 logger = logging.getLogger(__name__)

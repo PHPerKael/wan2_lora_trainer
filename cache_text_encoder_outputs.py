@@ -9,9 +9,9 @@ import torch
 # from tqdm import tqdm # Will be replaced or made conditional
 
 # --- Corrected Relative Imports ---
-from .dataset import config_utils # For load_user_config
-from .dataset.config_utils import BlueprintGenerator, ConfigSanitizer
-from .dataset.image_video_dataset import ARCHITECTURE_HUNYUAN_VIDEO, BaseDataset, ItemInfo, save_text_encoder_output_cache
+from dataset import config_utils # For load_user_config
+from dataset.config_utils import BlueprintGenerator, ConfigSanitizer
+from dataset.image_video_dataset import ARCHITECTURE_HUNYUAN_VIDEO, BaseDataset, ItemInfo, save_text_encoder_output_cache
 
 # For Hunyuan specific text encoder parts, if this script is also used for Hunyuan
 # These imports will ONLY work if 'hunyuan_model' is a sub-package of 'musubi-tuner'
@@ -19,8 +19,8 @@ from .dataset.image_video_dataset import ARCHITECTURE_HUNYUAN_VIDEO, BaseDataset
 # For now, I'll assume they are relative if you intend to use this script for Hunyuan via MusubiTuner.
 # If this script is *only* a base for WAN, then these Hunyuan parts might not be needed by WAN.
 try:
-    from .hunyuan_model import text_encoder as text_encoder_module 
-    from .hunyuan_model.text_encoder import TextEncoder
+    from hunyuan_model import text_encoder as text_encoder_module 
+    from hunyuan_model.text_encoder import TextEncoder
 except ImportError:
     print("[cache_text_encoder_outputs.py] Warning: Could not import Hunyuan text encoder modules. This is fine if only used for WAN.")
     TextEncoder = None # Placeholder if not found
@@ -33,9 +33,9 @@ import logging
 # The original import was "from dataset.utils.model_utils import str_to_dtype"
 # If model_utils is in musubi-tuner/utils/, the import should be:
 try:
-    from .train_utils.model_utils import str_to_dtype
+    from train_utils.model_utils import str_to_dtype
 except ImportError:
-    print("[cache_text_encoder_outputs.py] Warning: Could not import str_to_dtype from .utils.model_utils")
+    print("[cache_text_encoder_outputs.py] Warning: Could not import str_to_dtype from utils.model_utils")
     def str_to_dtype(x): return torch.float32 # Fallback
 
 logger = logging.getLogger(__name__)

@@ -16,16 +16,16 @@ import torch
 # These imports are for when THIS script (wan_cache_text_encoder_outputs.py) is run/imported.
 
 # For modules directly under musubi-tuner/dataset/
-from .dataset import config_utils                 # For load_user_config
-from .dataset.config_utils import BlueprintGenerator, ConfigSanitizer
-from .dataset.image_video_dataset import ARCHITECTURE_WAN, ItemInfo, save_text_encoder_output_cache_wan
+from dataset import config_utils                 # For load_user_config
+from dataset.config_utils import BlueprintGenerator, ConfigSanitizer
+from dataset.image_video_dataset import ARCHITECTURE_WAN, ItemInfo, save_text_encoder_output_cache_wan
 
 # For modules directly under musubi-tuner/wan/
-from .wan.configs import wan_t2v_14B            # For T5 config
-from .wan.modules.t5 import T5EncoderModel
+from wan.configs import wan_t2v_14B            # For T5 config
+from wan.modules.t5 import T5EncoderModel
 
 # For modules directly under musubi-tuner/ (sibling script)
-from . import cache_text_encoder_outputs as base_cache_text_encoder_script # The base script
+import cache_text_encoder_outputs as base_cache_text_encoder_script # The base script
 
 
 
@@ -122,7 +122,7 @@ def main(args_ns: argparse.Namespace): # Changed 'args' to 'args_ns' to avoid co
         datasets,                            # 2. datasets
         all_cache_files_for_dataset,         # 3. all_cache_files_for_dataset
         all_cache_paths_for_dataset,         # 4. all_cache_paths_for_dataset
-        encode_for_text_encoder_wrapper      # 5. la función de codificación específica para WAN
+        encode_for_text_encoder_wrapper      # 5. la funciï¿½n de codificaciï¿½n especï¿½fica para WAN
     )
     del text_encoder
     logger.info(f"{node_name_print} Finished encoding with T5.")

@@ -1,4 +1,4 @@
-from . import hv_train_network as hv_common_trainer_script 
+import hv_train_network as hv_common_trainer_script
 import argparse # Si aún no está
 from typing import Optional
 from PIL import Image
@@ -9,20 +9,17 @@ import torchvision.transforms.functional as TF
 from tqdm import tqdm
 from accelerate import Accelerator, init_empty_weights
 
-from .wan.modules.clip import CLIPModel
-from .wan.modules.model import WanModel, detect_wan_sd_dtype, load_wan_model
-from .wan.modules.t5 import T5EncoderModel
-from .wan.modules.vae import WanVAE
-from .wan.configs import WAN_CONFIGS
-from .wan.utils.fm_solvers_unipc import FlowUniPCMultistepScheduler
-from .dataset.image_video_dataset import ARCHITECTURE_WAN, ARCHITECTURE_WAN_FULL, load_video
-from .hv_generate_video import resize_image_to_bucket
-from .hv_train_network import NetworkTrainer, load_prompts, clean_memory_on_device, setup_parser_common, read_config_from_file
-from .train_utils import model_utils
-from .train_utils.safetensors_utils import load_safetensors, MemoryEfficientSafeOpen
-
-
-
+from wan.modules.clip import CLIPModel
+from wan.modules.model import WanModel, detect_wan_sd_dtype, load_wan_model
+from wan.modules.t5 import T5EncoderModel
+from wan.modules.vae import WanVAE
+from wan.configs import WAN_CONFIGS
+from wan.utils.fm_solvers_unipc import FlowUniPCMultistepScheduler
+from dataset.image_video_dataset import ARCHITECTURE_WAN, ARCHITECTURE_WAN_FULL, load_video
+from hv_generate_video import resize_image_to_bucket
+from hv_train_network import NetworkTrainer, load_prompts, clean_memory_on_device, setup_parser_common, read_config_from_file
+from train_utils import model_utils
+from train_utils.safetensors_utils import load_safetensors, MemoryEfficientSafeOpen
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
