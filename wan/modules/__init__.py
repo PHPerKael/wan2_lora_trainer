@@ -1,8 +1,8 @@
-from attention import flash_attention
-from model import WanModel
-from t5 import T5Decoder, T5Encoder, T5EncoderModel, T5Model
-from tokenizers import HuggingfaceTokenizer
-from vae import WanVAE
+from wan.modules.attention import flash_attention
+from wan.modules.model import WanModel
+from wan.modules.t5 import T5Decoder, T5Encoder, T5EncoderModel, T5Model
+from wan.modules.tokenizers import HuggingfaceTokenizer
+from wan.modules.vae import WanVAE
 
 __all__ = [
     'WanVAE',

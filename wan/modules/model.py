@@ -9,17 +9,17 @@ from accelerate import init_empty_weights
 
 import logging
 
-from ...train_utils.safetensors_utils import MemoryEfficientSafeOpen, load_safetensors
+from train_utils.safetensors_utils import MemoryEfficientSafeOpen, load_safetensors
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
-from ...train_utils.device_utils import clean_memory_on_device
+from train_utils.device_utils import clean_memory_on_device
 
 from .attention import flash_attention
-from ...train_utils.device_utils import clean_memory_on_device
-from ...modules.custom_offloading_utils import ModelOffloader
-from ...modules.fp8_optimization_utils import apply_fp8_monkey_patch, optimize_state_dict_with_fp8
+from train_utils.device_utils import clean_memory_on_device
+from modules.custom_offloading_utils import ModelOffloader
+from modules.fp8_optimization_utils import apply_fp8_monkey_patch, optimize_state_dict_with_fp8
 
 __all__ = ["WanModel"]
 

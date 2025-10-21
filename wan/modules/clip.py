@@ -14,7 +14,7 @@ from attention import flash_attention
 from tokenizers import HuggingfaceTokenizer
 from xlm_roberta import XLMRoberta
 
-from ...train_utils.safetensors_utils import load_safetensors
+from train_utils.safetensors_utils import load_safetensors
 
 __all__ = [
     "XLMRobertaCLIP",
